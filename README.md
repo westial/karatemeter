@@ -10,6 +10,8 @@ strength of the gravitational field (N/kg).
 
 There is a [Quickstart](doc/Quickstart.pdf) document for fastly play with it.
 
+This project is hosted at [https://github.com/westial/karatemeter](https://github.com/westial/karatemeter)
+
 ## General warning ##
 
 **Carefully read the [additional document about the precautions of the lithium 
