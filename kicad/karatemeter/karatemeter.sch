@@ -4,10 +4,10 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
+Title "Karatemeter"
 Date ""
-Rev ""
-Comp ""
+Rev "1.0.2"
+Comp "Westial"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -618,4 +618,12 @@ Wire Wire Line
 	7700 800  7150 800 
 Connection ~ 7700 1750
 Connection ~ 7150 800 
+Wire Wire Line
+	6600 1400 6850 1400
+Wire Wire Line
+	6850 1400 6850 3350
+Wire Wire Line
+	6850 3350 7050 3350
+Connection ~ 6600 1400
+Connection ~ 7050 3350
 $EndSCHEMATC
