@@ -1,0 +1,621 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L customjaume:TP4056 Chgr1
+U 1 1 60937AE1
+P 7300 2950
+F 0 "Chgr1" V 7254 3288 50  0000 L CNN
+F 1 "TP4056" V 7345 3288 50  0000 L CNN
+F 2 "" H 7150 2950 50  0001 C CNN
+F 3 "" H 7150 2950 50  0001 C CNN
+	1    7300 2950
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:Battery Batt1
+U 1 1 60938E06
+P 7500 1750
+F 0 "Batt1" H 7608 1796 50  0000 L CNN
+F 1 "Battery" H 7608 1705 50  0000 L CNN
+F 2 "" V 7500 1810 50  0001 C CNN
+F 3 "~" V 7500 1810 50  0001 C CNN
+	1    7500 1750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:Buzzer Bz1
+U 1 1 60946723
+P 5500 4200
+F 0 "Bz1" H 5505 3875 50  0000 C CNN
+F 1 "Buzzer" H 5505 3966 50  0000 C CNN
+F 2 "" V 5475 4300 50  0001 C CNN
+F 3 "~" V 5475 4300 50  0001 C CNN
+	1    5500 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L _sensors:H3LIS331DL Accel1
+U 1 1 60951581
+P 2050 5600
+F 0 "Accel1" V 2096 6077 50  0000 L CNN
+F 1 "H3LIS331DL" V 2005 6077 50  0000 L CNN
+F 2 "MODULE" H 2200 5600 50  0001 C CNN
+F 3 "high-g accelerometer" H 2200 5600 50  0001 C CNN
+	1    2050 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_FET:IRF4905 Mfet1
+U 1 1 60957EC5
+P 6600 2000
+F 0 "Mfet1" V 6849 2000 50  0000 C CNN
+F 1 "IRF4905" V 6940 2000 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 6800 1925 50  0001 L CIN
+F 3 "http://www.infineon.com/dgdl/irf4905.pdf?fileId=5546d462533600a4015355e32165197c" H 6600 2000 50  0001 L CNN
+	1    6600 2000
+	0    1    1    0   
+$EndComp
+$Comp
+L Diode:1N5817 D1
+U 1 1 6095973C
+P 6150 1400
+F 0 "D1" V 6196 1320 50  0000 R CNN
+F 1 "1N5817" V 6105 1320 50  0000 R CNN
+F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 6150 1225 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/88525/1n5817.pdf" H 6150 1400 50  0001 C CNN
+	1    6150 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Regulator_Linear:MCP1700-3302E_TO92 LDO1_3.3V
+U 1 1 6096649D
+P 5300 1400
+F 0 "LDO1_3.3V" H 5300 1158 50  0000 C CNN
+F 1 "MCP1700-3302E_TO92" H 5300 1249 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 5300 1200 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001826D.pdf" H 5300 1400 50  0001 C CNN
+	1    5300 1400
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:CP_Small Cb1
+U 1 1 609726F1
+P 7500 2100
+F 0 "Cb1" V 7275 2100 50  0000 C CNN
+F 1 "4.7uF" V 7366 2100 50  0000 C CNN
+F 2 "" H 7500 2100 50  0001 C CNN
+F 3 "~" H 7500 2100 50  0001 C CNN
+	1    7500 2100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 609742FD
+P 5400 4750
+F 0 "#PWR?" H 5400 4500 50  0001 C CNN
+F 1 "Earth" H 5400 4600 50  0001 C CNN
+F 2 "" H 5400 4750 50  0001 C CNN
+F 3 "~" H 5400 4750 50  0001 C CNN
+	1    5400 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 4300 5400 4750
+Wire Wire Line
+	7400 2550 7700 2550
+Wire Wire Line
+	7700 2550 7700 2100
+Wire Wire Line
+	7300 1750 7300 2100
+Wire Wire Line
+	7300 2100 7400 2100
+Connection ~ 7300 2100
+Wire Wire Line
+	7300 2100 7300 2550
+Wire Wire Line
+	7600 2100 7700 2100
+Connection ~ 7700 2100
+Wire Wire Line
+	7700 2100 7700 1750
+Wire Wire Line
+	6800 2100 7050 2100
+Wire Wire Line
+	7050 2100 7050 2550
+Wire Wire Line
+	6600 1800 6600 1400
+Wire Wire Line
+	6600 1400 6300 1400
+Wire Wire Line
+	6000 1400 5800 1400
+Wire Wire Line
+	6400 2100 5800 2100
+Wire Wire Line
+	5800 2100 5800 1400
+Connection ~ 5800 1400
+Wire Wire Line
+	5800 1400 5600 1400
+$Comp
+L power:Earth #PWR?
+U 1 1 609E096F
+P 5300 1800
+F 0 "#PWR?" H 5300 1550 50  0001 C CNN
+F 1 "Earth" H 5300 1650 50  0001 C CNN
+F 2 "" H 5300 1800 50  0001 C CNN
+F 3 "~" H 5300 1800 50  0001 C CNN
+	1    5300 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L customjaume:arduino_mini328_3.3v CPU1
+U 1 1 609E3409
+P 4550 3600
+F 0 "CPU1" H 4550 1946 70  0000 C CNN
+F 1 "arduino_mini328_3.3v" H 4550 1825 70  0000 C CNN
+F 2 "DIL20" H 4550 1711 60  0000 C CNN
+F 3 "" H 4550 3600 50  0001 C CNN
+	1    4550 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP_Small Coled1
+U 1 1 6096DD2C
+P 2700 2750
+F 0 "Coled1" H 2788 2796 50  0000 L CNN
+F 1 "500uF" H 2788 2705 50  0000 L CNN
+F 2 "" H 2700 2750 50  0001 C CNN
+F 3 "~" H 2700 2750 50  0001 C CNN
+	1    2700 2750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3850 3800 3150 3800
+Wire Wire Line
+	3850 3900 3000 3900
+Wire Wire Line
+	3000 3900 3000 5300
+Wire Wire Line
+	3000 5300 2750 5300
+Wire Wire Line
+	3150 3800 3150 5400
+Wire Wire Line
+	3150 5400 2750 5400
+$Comp
+L power:Earth #PWR?
+U 1 1 60A00EFA
+P 2200 6500
+F 0 "#PWR?" H 2200 6250 50  0001 C CNN
+F 1 "Earth" H 2200 6350 50  0001 C CNN
+F 2 "" H 2200 6500 50  0001 C CNN
+F 3 "~" H 2200 6500 50  0001 C CNN
+	1    2200 6500
+	1    0    0    -1  
+$EndComp
+$Comp
+L customjaume:SSD1306_OLED OLED1
+U 1 1 6093A413
+P 2250 2500
+F 0 "OLED1" V 2287 2817 60  0000 C CNN
+F 1 "SSD1306_OLED" V 2181 2817 60  0000 C CNN
+F 2 "" H 2250 2500 60  0001 C CNN
+F 3 "" H 2250 2500 60  0001 C CNN
+	1    2250 2500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3150 3800 3150 3300
+Wire Wire Line
+	3150 3300 2250 3300
+Connection ~ 3150 3800
+Wire Wire Line
+	3000 3900 3000 3500
+Wire Wire Line
+	3000 3500 2250 3500
+Connection ~ 3000 3900
+$Comp
+L power:Earth #PWR?
+U 1 1 6093F786
+P 3150 2950
+F 0 "#PWR?" H 3150 2700 50  0001 C CNN
+F 1 "Earth" H 3150 2800 50  0001 C CNN
+F 2 "" H 3150 2950 50  0001 C CNN
+F 3 "~" H 3150 2950 50  0001 C CNN
+	1    3150 2950
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2250 2950 3000 2950
+Wire Wire Line
+	2800 2750 3000 2750
+Wire Wire Line
+	3000 2750 3000 2950
+Connection ~ 3000 2950
+Wire Wire Line
+	3000 2950 3150 2950
+Wire Wire Line
+	1350 5250 1200 5250
+$Comp
+L Device:CP_Small Cacc1
+U 1 1 60956E2D
+P 1450 6350
+F 0 "Cacc1" V 1225 6350 50  0000 C CNN
+F 1 "500uF" V 1316 6350 50  0000 C CNN
+F 2 "" H 1450 6350 50  0001 C CNN
+F 3 "~" H 1450 6350 50  0001 C CNN
+	1    1450 6350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1550 6350 2200 6350
+Wire Wire Line
+	2200 6150 2200 6350
+Connection ~ 2200 6350
+Wire Wire Line
+	2200 6350 2200 6500
+Wire Wire Line
+	1350 6350 1200 6350
+Wire Wire Line
+	1200 5250 1200 6350
+$Comp
+L Connector:USB_B_Mini Plug
+U 1 1 60963EE8
+P 7250 3750
+F 0 "Plug" H 7020 3647 50  0000 R CNN
+F 1 "USB_B_Mini" H 7020 3738 50  0000 R CNN
+F 2 "" H 7400 3700 50  0001 C CNN
+F 3 "~" H 7400 3700 50  0001 C CNN
+	1    7250 3750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7400 3350 7700 3350
+Wire Wire Line
+	7700 3750 7650 3750
+Wire Wire Line
+	5400 4100 5250 4100
+Wire Wire Line
+	2750 5500 5700 5500
+Wire Wire Line
+	5700 5500 5700 3350
+Wire Wire Line
+	5700 3350 5250 3350
+Wire Wire Line
+	7050 3350 7050 3450
+Wire Wire Line
+	7700 3350 7700 3750
+$Comp
+L atmega328:R Rd1
+U 1 1 60992DBE
+P 3800 6350
+F 0 "Rd1" V 3592 6350 50  0000 C CNN
+F 1 "100K" V 3683 6350 50  0000 C CNN
+F 2 "" H 3800 6350 50  0001 C CNN
+F 3 "" H 3800 6350 50  0001 C CNN
+	1    3800 6350
+	0    1    1    0   
+$EndComp
+$Comp
+L atmega328:R Rd2
+U 1 1 609968C8
+P 3300 6350
+F 0 "Rd2" V 3092 6350 50  0000 C CNN
+F 1 "33K" V 3183 6350 50  0000 C CNN
+F 2 "" H 3300 6350 50  0001 C CNN
+F 3 "" H 3300 6350 50  0001 C CNN
+	1    3300 6350
+	0    1    1    0   
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 609AD9D9
+P 2750 6500
+F 0 "#PWR?" H 2750 6250 50  0001 C CNN
+F 1 "Earth" H 2750 6350 50  0001 C CNN
+F 2 "" H 2750 6500 50  0001 C CNN
+F 3 "~" H 2750 6500 50  0001 C CNN
+	1    2750 6500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2750 6350 2750 6500
+Wire Wire Line
+	2750 6350 3050 6350
+Wire Wire Line
+	7300 1750 7300 1300
+Wire Wire Line
+	7300 1300 7900 1300
+Wire Wire Line
+	7900 1300 7900 6350
+Wire Wire Line
+	7900 6350 4050 6350
+Connection ~ 7300 1750
+Wire Wire Line
+	3550 6350 3550 3400
+Wire Wire Line
+	3550 3400 3850 3400
+Connection ~ 3550 6350
+Text Notes 3200 6500 0    50   ~ 0
+battery level check
+$Comp
+L Switch:SW_Push Rst1
+U 1 1 609C154C
+P 4050 5900
+F 0 "Rst1" H 4050 6185 50  0000 C CNN
+F 1 "Reset Btn" H 4050 6094 50  0000 C CNN
+F 2 "" H 4050 6100 50  0001 C CNN
+F 3 "~" H 4050 6100 50  0001 C CNN
+	1    4050 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 609C5562
+P 4550 6000
+F 0 "#PWR?" H 4550 5750 50  0001 C CNN
+F 1 "Earth" H 4550 5850 50  0001 C CNN
+F 2 "" H 4550 6000 50  0001 C CNN
+F 3 "~" H 4550 6000 50  0001 C CNN
+	1    4550 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4550 5150 4550 5900
+Wire Wire Line
+	4250 5900 4550 5900
+Connection ~ 4550 5900
+Wire Wire Line
+	4550 5900 4550 6000
+Wire Wire Line
+	3850 5900 3700 5900
+Wire Wire Line
+	3700 5900 3700 4900
+Wire Wire Line
+	3700 4900 3850 4900
+$Comp
+L Analog_Switch:ADG417BN Sw1
+U 1 1 609E517F
+P 6800 4750
+F 0 "Sw1" H 6800 5017 50  0000 C CNN
+F 1 "Sensitivity" H 6800 4926 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 6800 4650 50  0001 C CNN
+F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG417.pdf" H 6800 4750 50  0001 C CNN
+	1    6800 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Analog_Switch:ADG417BN Sw2
+U 1 1 609EBA5E
+P 6800 5600
+F 0 "Sw2" H 6800 5867 50  0000 C CNN
+F 1 "Display Mode" H 6800 5776 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 6800 5500 50  0001 C CNN
+F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG417.pdf" H 6800 5600 50  0001 C CNN
+	1    6800 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L atmega328:R RSwout1
+U 1 1 609F1F16
+P 6400 4300
+F 0 "RSwout1" H 6471 4346 50  0000 L CNN
+F 1 "10K" H 6471 4255 50  0000 L CNN
+F 2 "" H 6400 4300 50  0001 C CNN
+F 3 "" H 6400 4300 50  0001 C CNN
+	1    6400 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 60A0A560
+P 7350 5850
+F 0 "#PWR?" H 7350 5600 50  0001 C CNN
+F 1 "Earth" H 7350 5700 50  0001 C CNN
+F 2 "" H 7350 5850 50  0001 C CNN
+F 3 "~" H 7350 5850 50  0001 C CNN
+	1    7350 5850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 60A08202
+P 7350 5000
+F 0 "#PWR?" H 7350 4750 50  0001 C CNN
+F 1 "Earth" H 7350 4850 50  0001 C CNN
+F 2 "" H 7350 5000 50  0001 C CNN
+F 3 "~" H 7350 5000 50  0001 C CNN
+	1    7350 5000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6800 4950 6800 5000
+Wire Wire Line
+	6800 5000 7350 5000
+Wire Wire Line
+	6800 5800 6800 5850
+Wire Wire Line
+	6800 5850 7350 5850
+Wire Wire Line
+	6200 4750 6200 3150
+Wire Wire Line
+	6200 3150 5250 3150
+Wire Wire Line
+	6000 5600 6000 3050
+Wire Wire Line
+	6000 3050 5250 3050
+$Comp
+L Analog_Switch:ADG417BN SwPow
+U 1 1 6094F269
+P 1850 1400
+F 0 "SwPow" H 1850 1667 50  0000 C CNN
+F 1 "On/Off" H 1850 1576 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 1850 1300 50  0001 C CNN
+F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG417.pdf" H 1850 1400 50  0001 C CNN
+	1    1850 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2250 2750 2600 2750
+Wire Wire Line
+	1200 5250 1200 2150
+Wire Wire Line
+	1200 2150 3000 2150
+Wire Wire Line
+	3000 2150 3000 2750
+Connection ~ 1200 5250
+Connection ~ 3000 2750
+Wire Wire Line
+	4700 2450 4700 2150
+Wire Wire Line
+	4700 2150 3000 2150
+Connection ~ 3000 2150
+Wire Wire Line
+	3000 1400 3000 2150
+Wire Wire Line
+	5300 1700 5300 1800
+$Comp
+L Device:CP_Small Ccpu
+U 1 1 609EB5CC
+P 5000 2150
+F 0 "Ccpu" V 4775 2150 50  0000 C CNN
+F 1 "500uF" V 4866 2150 50  0000 C CNN
+F 2 "" H 5000 2150 50  0001 C CNN
+F 3 "~" H 5000 2150 50  0001 C CNN
+	1    5000 2150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 60990307
+P 5300 2300
+F 0 "#PWR?" H 5300 2050 50  0001 C CNN
+F 1 "Earth" H 5300 2150 50  0001 C CNN
+F 2 "" H 5300 2300 50  0001 C CNN
+F 3 "~" H 5300 2300 50  0001 C CNN
+	1    5300 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4700 2150 4900 2150
+Connection ~ 4700 2150
+Wire Wire Line
+	5100 2150 5300 2150
+Wire Wire Line
+	5300 2150 5300 2300
+$Comp
+L charger_stepup-cache:LED LedPw1
+U 1 1 609989CA
+P 5200 5900
+F 0 "LedPw1" H 5193 6116 50  0000 C CNN
+F 1 "Power Warn" H 5193 6025 50  0000 C CNN
+F 2 "" H 5200 5900 50  0001 C CNN
+F 3 "" H 5200 5900 50  0001 C CNN
+	1    5200 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L atmega328:R RLPw1
+U 1 1 609A7594
+P 5600 5900
+F 0 "RLPw1" V 5392 5900 50  0000 C CNN
+F 1 "200R" V 5483 5900 50  0000 C CNN
+F 2 "" H 5600 5900 50  0001 C CNN
+F 3 "" H 5600 5900 50  0001 C CNN
+	1    5600 5900
+	0    1    1    0   
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 609B44BF
+P 4850 6000
+F 0 "#PWR?" H 4850 5750 50  0001 C CNN
+F 1 "Earth" H 4850 5850 50  0001 C CNN
+F 2 "" H 4850 6000 50  0001 C CNN
+F 3 "~" H 4850 6000 50  0001 C CNN
+	1    4850 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4850 6000 4850 5900
+Wire Wire Line
+	4850 5900 5050 5900
+Wire Wire Line
+	5850 5900 5850 3550
+Wire Wire Line
+	5850 3550 5250 3550
+$Comp
+L atmega328:R RSwout2
+U 1 1 609D404C
+P 6400 5200
+F 0 "RSwout2" H 6471 5246 50  0000 L CNN
+F 1 "10K" H 6471 5155 50  0000 L CNN
+F 2 "" H 6400 5200 50  0001 C CNN
+F 3 "" H 6400 5200 50  0001 C CNN
+	1    6400 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 4750 6400 4750
+Wire Wire Line
+	6000 5600 6400 5600
+Wire Wire Line
+	6400 4050 6400 3900
+Wire Wire Line
+	6400 3900 5250 3900
+Wire Wire Line
+	6400 4550 6400 4750
+Connection ~ 6400 4750
+Wire Wire Line
+	6400 4750 6500 4750
+Wire Wire Line
+	6400 4950 6100 4950
+Wire Wire Line
+	6100 4950 6100 4000
+Wire Wire Line
+	6100 4000 5250 4000
+Wire Wire Line
+	6400 5450 6400 5600
+Connection ~ 6400 5600
+Wire Wire Line
+	6400 5600 6500 5600
+$Comp
+L power:Earth #PWR?
+U 1 1 609AF8D4
+P 1850 1800
+F 0 "#PWR?" H 1850 1550 50  0001 C CNN
+F 1 "Earth" H 1850 1650 50  0001 C CNN
+F 2 "" H 1850 1800 50  0001 C CNN
+F 3 "~" H 1850 1800 50  0001 C CNN
+	1    1850 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 1400 5000 1400
+Wire Wire Line
+	1850 1600 1850 1800
+Wire Wire Line
+	7150 800  2500 800 
+Wire Wire Line
+	2500 800  2500 1400
+Wire Wire Line
+	2500 1400 2150 1400
+Wire Wire Line
+	7150 800  7150 2550
+Wire Wire Line
+	7700 1750 7700 800 
+Wire Wire Line
+	7700 800  7150 800 
+Connection ~ 7700 1750
+Connection ~ 7150 800 
+$EndSCHEMATC

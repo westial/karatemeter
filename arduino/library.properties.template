@@ -1,0 +1,10 @@
+name=Karatemeter
+version=1.0.0
+author=Jaume Mila <jaume@westial.com>
+maintainer=Jaume Mila <jaume@westial.com>
+sentence=Firmware for an accelerator based body movements measurement.
+paragraph=This firmware is an implementation of an abstract library with the same name. It measures the movement of a part of the body while beating or doing a fast movement, like karate punching and kicking movements.
+category=Device Control
+url=https://github.com/westial/karatemeter
+architectures=*
+includes=*

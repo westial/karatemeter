@@ -1,0 +1,10 @@
+//
+// Created by jaume on 4/30/21.
+//
+
+#ifndef KARATEMETER_INCLUDE_CONFIG_TYPECONFIG_H_
+#define KARATEMETER_INCLUDE_CONFIG_TYPECONFIG_H_
+
+typedef short D_num;
+
+#endif //KARATEMETER_INCLUDE_CONFIG_TYPECONFIG_H_
