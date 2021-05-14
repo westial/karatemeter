@@ -34,9 +34,7 @@ Karatemeter is a device to measure the acceleration of punching or kicking.
 The score is measured by "g", the acceleration of gravity 9.8 (m/s2) or the 
 strength of the gravitational field (N/kg).
 
-There is a [Quickstart](doc/Quickstart.pdf) document for fastly play with it.
-
-This project is hosted at [https://github.com/westial/karatemeter](https://github.com/westial/karatemeter)
+This project is hosted on [https://github.com/westial/karatemeter](https://github.com/westial/karatemeter)
 
 ## Warnings ##
 
@@ -53,6 +51,8 @@ isolated and fireproof container.
 
 ## How it works ##
 
+[Quickstart](doc/Quickstart.pdf) is a document for fastly play with it.
+
 ### Parts ###
 
 ![Parts](doc/img/parts.jpg)
@@ -65,11 +65,10 @@ Karatemeter system is provided in three pieces.
 
 #### Control Box ####
 
-The Control Box contains the hardware. Do not hit this box, it is made with a
-high level of protection against humidity, hard movements and vibration, but it
-is not made as resistant as the Sensor.
+The Control Box contains most of the hardware. This box is not as resistant as 
+the Sensor, handle it carefully.
 
-The Control Box has the switch for powering on and off, the display and the 
+The Control Box has the switch for powering on and off, the OLED display and the 
 settings control panel as well.
 
 ![Ctrl. Box Schema](doc/img/ctrlbox.png)
@@ -82,26 +81,26 @@ settings control panel as well.
 6. Critical battery level Led.
 7. Micro USB charging port.
 
-The Arduino based microcontroller has soldered a port for future firmware 
-updates through a FTDI cable.
+The Arduino based microcontroller has an open port for FTDI cable to update the 
+firmware.
 
 ##### Battery #####
 
 ![Battery](doc/img/battery.jpg)
 
-At the bottom of the box there is one replaceable 18650 lithium battery. A load 
-sharing power circuit that allows to charge the battery while using the 
-Karatemeter safely.
+At the bottom of the box there is a replaceable 18650 lithium battery, and a load 
+sharing power circuit that allows to charge the battery while safely using the 
+Karatemeter.
 
 If the battery gets totally discharged it can lock the power charging/loading
 remove a few seconds and put in again the battery if it happens.
 
-**When you put in the battery again it is very important to put the positive and
-negative pole as expected. Reversing the polarity can damage the device and 
-eventually the battery can catch fire.**
+**When you put back the battery carefully set the positive and negative poles as 
+expected. Reversing the polarity can damage the device and eventually the 
+battery can catch fire.**
 
-The charger supports Micro USB cable and there is a blue light on when the 
-battery is fully charged, or a red light if it is still charging.
+The charger supports Micro USB cable. Karameter works with and without battery
+when the Micro USB cable is feeding the power.
 
 When the battery is charging the charger turns on a red color light and when the
 battery is fully charged the light becomes blue. There is no light when the 
@@ -109,29 +108,30 @@ USB cable is disconnected.
 
 ![Light](doc/img/chargerlight.jpg)
 
-Follow the next steps of the picture to replace or remove the battery.
+The following pictures is the sequence steps to remove the battery.
 The battery is surrounded by a thin plastic band to make extraction easier.
-The grey cover of the first picture is required to avoid shorting the display 
-module and the microcontroller one.
-
-NEVER PUT THE NEGATIVE POLE IN THE POSITIVE PLACE OR POSITIVE IN NEGATIVE ONE.
+The grey cover tape of the first picture is absolutely required to avoid 
+shorting the display module and the microcontroller one.
 
 ![Replacing](doc/img/replacebattery.png)
 
-If the battery level gets 0% the display turns off and a red light turns on with
-a beep on intervals of 10 seconds.
+If the battery level gets 0% the display turns off, and a red light on the right
+corner of the Control Box interface turns on while a beep sound at intervals of 
+several seconds.
 
 ![Sensor](doc/img/lowbattery.jpg)
 
-It is very important to turn off the Karatemeter when it is not in use.
+It is very important to turn off the Karatemeter when it is not in use, and if
+the Karatemeter is not used regularly is totally recommended removing the 
+battery to safely store it.
 
 #### Sensor ####
 
 ![Sensor](doc/img/sensor.jpg)
 
 The high-g accelerometer sensor remains inside a protection shield attached on a 
-long hard wristband with Velcro closure. It can be tied on an arm, a leg and on 
-a target as wide as the band reaches.
+long hard wristband with Velcro closure. It can be tied around an arm, a leg and 
+on a target as wide as the band reaches.
 
 #### Wire ####
 
@@ -139,7 +139,7 @@ a target as wide as the band reaches.
 pluggable but there is a plastic bracket overall to protect from jerks. 
 
 The wire must not be so tensed from the Control Box to the Sensor because it 
-could accidentally disconnect the ends. It also does not have to be very loose 
+could accidentally disconnect the ends. It does not have to be very loose 
 because it can be hooked.
 
 The excess cable can be folded into the front of the Control Box.
@@ -167,8 +167,8 @@ Karatemeter have two configurable settings:
 * Sensitivity.
 * Display Mode.
 
-IMPORTANT: To change the settings, move the switches and after push the RESTART 
-button, or change the settings before to turn on the Karatemeter.
+**IMPORTANT: To change the settings, move the switches and after push the RESTART 
+button, or change the settings before to turn on the Karatemeter.**
 
 #### Sensitivity ####
 
@@ -213,26 +213,29 @@ session hit scores will be corrupted, it has to be restarted.
 
 ### Working ###
 
-The sensor is configured to ignore the hits under a minimum value of sensitivity.
-If the sensor gets a movement over the minimum hit sensitivity it plays the buzzer 
-signal and refreshes the display with the new scores.
+The sensor is configured to ignore the hits under the minimum value of sensitivity.
+The sensor has 2 states: waiting for a hit and rendering the score.
 
-There is a timeout of 10 seconds, if the sensor does not get a valid hit, it
-plays the buzzer, refreshes the display and stops the buzzer.
+While it is waiting for a hit, if it gets an acceleration over the minimum 
+sensitivity and later the acceleration decreases, it detects that there has been
+a hit, and automatically ends the waiting state and renders the new score.
+
+If the sensor does not get a valid hit after 10 seconds during the waiting, it 
+renders the display with the score as 0.
+
+The rendering score state is highlighted with a continuous beep sound. Any 
+acceleration during this beep is ignored.
 
 The following graph illustrates the behavior described above:
 
 ![Impact graph](doc/img/karatemeterimpact.png)
-
-Do not hit during the display refreshing buzzer signals because the score will
-be ignored. The tiny microcontroller is busy with the display job.
 
 ### Acceleration measurement ###
 
 See the following picture. The hit direction is the red line that crosses the 
 rectangular prism. The accelerometer reads the x, y and z accelerations, so 
 by using the pythagorean formula the Karatemeter impact library calculates the
-length of the red line.
+length of the red line, the hit.
 
 This method is not so accurate when the hit is not totally straight, but it does 
 the job most of the time.
@@ -340,9 +343,10 @@ to your Arduino libraries location.
 
 ## 押忍! ##
 
-Special thanks to [Tenshi dojo](https://tenshidojo.jp/) and the great group of 
-Saturday's classmates for allowing me to learn and enjoy Karate with them 
-despite my very elementary japanese level.
+Special thanks to [Tenshi Dojo (空手道 天志道場)](https://tenshidojo.jp/) and the great group of 
+Saturday's classmates to let me learn and enjoy Karate with them 
+despite my elemental Japanese level. I made this project as a present for the 
+25th anniversary of this Dojo to thank them all the friendly welcoming.
 
 ## License ##
 
