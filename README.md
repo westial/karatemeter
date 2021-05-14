@@ -107,7 +107,9 @@ When the battery is charging the charger turns on a red color light and when the
 battery is fully charged the light becomes blue. There is no light when the 
 USB cable is disconnected.
 
-Follow the steps of the next picture sequence to replace or remove the battery.
+![Light](doc/img/chargerlight.jpg)
+
+Follow the next steps of the picture to replace or remove the battery.
 The battery is surrounded by a thin plastic band to make extraction easier.
 The grey cover of the first picture is required to avoid shorting the display 
 module and the microcontroller one.
@@ -115,8 +117,6 @@ module and the microcontroller one.
 NEVER PUT THE NEGATIVE POLE IN THE POSITIVE PLACE OR POSITIVE IN NEGATIVE ONE.
 
 ![Replacing](doc/img/replacebattery.png)
-
-![Light](doc/img/chargerlight.jpg)
 
 If the battery level gets 0% the display turns off and a red light turns on with
 a beep on intervals of 10 seconds.
