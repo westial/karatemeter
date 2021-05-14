@@ -3,6 +3,7 @@
 
 extern "C" {
 #include <MeasureAndDisplayByModeUseCase.h>
+#include <Calculate.h>
 }
 
 // ----------------------------------------------------------------- //
@@ -94,7 +95,7 @@ void turn_off_display();
 LIS331 xl;
 
 unsigned long accelerometer_timeout_at;
-int x_calibrate, y_calibrate, z_calibrate;
+int calibration;
 
 bool alternate_x_default = true;
 
@@ -104,7 +105,7 @@ int sensitive_min;
 
 void set_accel_sensitivity();
 void init_accelerometer();
-void read_axes_acceleration(int xyz[]);
+void read_axes_acceleration(int* acceleration);
 float convert_to_g(int value);
 int check_accelerometer_timeout();
 void reset_accelerometer_timeout();

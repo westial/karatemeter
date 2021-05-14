@@ -1,6 +1,6 @@
 /**
- * v-1.0.2 Karatemeter 
- * 2021-05-12. Updated sensisitivities for SOFT and HARD.
+ * v-1.0.3 Karatemeter 
+ * 2021-05-14. Read and calculate pythagorean acceleration in place.
  * 
  */
  #include "SparkFun_LIS331.h"
@@ -131,12 +131,10 @@ void init_accelerometer()
   xl.setI2CAddr(0x19);
 }
 
-void read_axes_acceleration(int xyz[]) {
+void read_axes_acceleration(int* acceleration) {
   int x, y, z;
   xl.readAxes(x, y, z);
-  xyz[0] = abs(x) - x_calibrate;
-  xyz[1] = abs(y) - y_calibrate;
-  xyz[2] = abs(z) - z_calibrate;
+  *acceleration = (int)round(pythagorean_acceleration(x, y, z)) - calibration;
 }
 
 float convert_to_g(int value) {
@@ -161,9 +159,10 @@ void calibrate_accelerometer()
   display_all();
   delay(2000);  
   int x, y, z;
-  x_calibrate = calculate_calibration(CALIBRATION_LOOPS, &x, &y, &z, &x);
-  y_calibrate = calculate_calibration(CALIBRATION_LOOPS, &x, &y, &z, &y);
-  z_calibrate = calculate_calibration(CALIBRATION_LOOPS, &x, &y, &z, &z);
+  int x_calibrate = calculate_calibration(CALIBRATION_LOOPS, &x, &y, &z, &x);
+  int y_calibrate = calculate_calibration(CALIBRATION_LOOPS, &x, &y, &z, &y);
+  int z_calibrate = calculate_calibration(CALIBRATION_LOOPS, &x, &y, &z, &z);
+  calibration = (int)round(pythagorean_acceleration(x_calibrate, y_calibrate, z_calibrate));
   display_clear();
   display.setCursor(0,1);
   display.println(F("Axes deviation: "));
@@ -174,6 +173,8 @@ void calibrate_accelerometer()
   display.print(F("y "));
   display.print(z_calibrate);
   display.println(F("z "));
+  display.print(calibration);
+  display.println(F(" total"));
   display_all();
   delay(1000);  
   display_clear();
