@@ -20,7 +20,7 @@ set_property(TARGET imp_cpputest PROPERTY IMPORTED_LOCATION /usr/local/lib/libCp
 
 # build test libraries
 add_library(SparringTest SparringTest.cpp)
-add_library(ImpactTest ImpactTest.cpp)
+add_library(ImpactTest MonoImpactTest.cpp)
 add_library(PeakTest PeakTest.cpp)
 add_library(DisplayTest DisplayTest.cpp)
 add_library(MaxQueueTest MaxQueueTest.cpp)
@@ -42,7 +42,7 @@ target_link_libraries(RunAllTests
         MeasureAndDisplayByModeUseCaseTest
         MeasureAndDisplayByModeUseCase
         AudibleSparring
-        Accelerometer3AxesImpact
+        MonoAccelerometerImpact
         ArrayPeak
         ArrayMaxQueue
         MonochromeDisplay

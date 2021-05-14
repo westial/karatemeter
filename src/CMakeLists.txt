@@ -12,6 +12,7 @@ include_directories(${PROJECT_SOURCE_DIR}/../include/base/config)
 # And link them in the runnable CMakeLists file
 add_library(AudibleSparring sparring/AudibleSparring.c)
 add_library(Accelerometer3AxesImpact impact/Accelerometer3AxesImpact.c)
+add_library(MonoAccelerometerImpact impact/MonoAccelerometerImpact.c)
 add_library(ArrayMaxQueue minlib/CachedMaxQueue.c)
 add_library(ArrayPeak impact/ArrayPeak.c)
 add_library(MonochromeDisplay display/MonochromeDisplay.c)

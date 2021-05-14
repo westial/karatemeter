@@ -10,12 +10,10 @@ extern "C" {
 // -----------------------------------------------------------------------------
 
 static int expected_result[90];
-static unsigned int multi_index;
+static unsigned int expected_index;
 
-static void stub_axes_acceleration(int *axes_result) {
-  for (int i = 0; i < 3; i++) {
-    axes_result[i] = expected_result[multi_index++];
-  }
+static void stub_acceleration(int *axes_result) {
+  *axes_result = expected_result[expected_index++];
 }
 
 static int timeout_after_readings_reached;
@@ -54,7 +52,7 @@ static void fake() {};
 
 TEST_GROUP(MeasureAndDisplayByMode) {
   void setup() override {
-    multi_index = 0;
+    expected_index = 0;
     int index;
     spied_display_bar_params_index = 0;
     spied_display_number_params_index = 0;
@@ -75,10 +73,8 @@ TEST(MeasureAndDisplayByMode, NoImpactNoDisplay) {
   int sensitive_min = 0;
   timeout_after_readings_reached = 1;
   expected_result[0] = 0;
-  expected_result[1] = 0;
-  expected_result[2] = 0;
   MeasureConfig measure_config = {
-      (void *) stub_axes_acceleration,
+      (void *) stub_acceleration,
       (void *) stub_countdown_accel_readings_timeout,
       sensitive_min,
       PEAK_RANGE_DISTANCE,
@@ -105,11 +101,9 @@ TEST(MeasureAndDisplayByMode, OneImpact) {
   int result;
   int sensitive_min = 18;
   timeout_after_readings_reached = 1;
-  expected_result[0] = 5;
-  expected_result[1] = 10;
-  expected_result[2] = 15;
+  expected_result[0] = 19;
   MeasureConfig measure_config = {
-      (void *) stub_axes_acceleration,
+      (void *) stub_acceleration,
       (void *) stub_countdown_accel_readings_timeout,
       sensitive_min,
       PEAK_RANGE_DISTANCE,
@@ -136,7 +130,7 @@ TEST(MeasureAndDisplayByMode, OneImpact) {
 TEST(MeasureAndDisplayByMode, MaxRemainsAllSession) {
   timeout_after_readings_reached = 1;
   MeasureConfig measure_config = {
-      (void *) stub_axes_acceleration,
+      (void *) stub_acceleration,
       (void *) stub_countdown_accel_readings_timeout,
       1,
       1,
@@ -152,21 +146,13 @@ TEST(MeasureAndDisplayByMode, MaxRemainsAllSession) {
       DISPLAY_HEIGHT
   };
   MeasureAndDisplayByModeUseCase_Create(&measure_config, &display_config);
-  expected_result[0] = 30;
-  expected_result[1] = 30;
-  expected_result[2] = 30;
+  expected_result[0] = 52;
   MeasureAndDisplayByModeUseCase_Invoke(RECORD);
-  expected_result[3] = 10;
-  expected_result[4] = 20;
-  expected_result[5] = 30;
+  expected_result[1] = 37;
   MeasureAndDisplayByModeUseCase_Invoke(RECORD);
-  expected_result[6] = 10;
-  expected_result[7] = 20;
-  expected_result[8] = 30;
+  expected_result[2] = 37;
   MeasureAndDisplayByModeUseCase_Invoke(RECORD);
-  expected_result[9] = 10;
-  expected_result[10] = 20;
-  expected_result[11] = 30;
+  expected_result[3] = 37;
   MeasureAndDisplayByModeUseCase_Invoke(RECORD);
   CHECK_EQUAL(37, spied_display_number_with_caption_params[0]);
   CHECK_EQUAL(52, spied_display_number_with_caption_params[1]);

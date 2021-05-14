@@ -6,7 +6,7 @@
 #define KARATESPARRING_INCLUDE_IMPACT_IMPACT_H_
 
 void Impact_Create(
-    const void* read_x3_acceleration_fn,
+    const void* read_acceleration_fn,
     const void* break_on_timeout_fn,
     int sensitive_min,
     unsigned long peak_range,
