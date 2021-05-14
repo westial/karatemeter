@@ -25,7 +25,7 @@ Karatemeter
   * [Do it yourself](#do-it-yourself)
     + [Components](#components)
     + [Arduino](#arduino)
-  * [押忍!](#押忍!)
+  * [押忍!](#押忍)
   * [License](#license)
   * [Author](#author)
 
