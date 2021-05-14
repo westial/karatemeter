@@ -3,6 +3,32 @@ Karatemeter
 
 ![Interface](doc/img/interface.jpg)
 
+- [Karatemeter](#karatemeter)
+  * [Warnings](#warnings)
+  * [How it works](#how-it-works)
+    + [Parts](#parts)
+      - [Control Box](#control-box)
+        * [Battery](#battery)
+      - [Sensor](#sensor)
+      - [Wire](#wire)
+    + [Settings](#settings)
+      - [Sensitivity](#sensitivity)
+      - [Display Mode](#display-mode)
+  * [Usage](#usage)
+    + [Calibration](#calibration)
+    + [Working](#working)
+    + [Acceleration measurement](#acceleration-measurement)
+    + [Playing ideas](#playing-ideas)
+      - [Training: attach the sensor to your body](#training--attach-the-sensor-to-your-body)
+      - [Playing a game: attach the sensor to a target](#playing-a-game--attach-the-sensor-to-a-target)
+  * [Software](#software)
+  * [Do it yourself](#do-it-yourself)
+    + [Components](#components)
+    + [Arduino](#arduino)
+  * [押忍!](#---)
+  * [License](#license)
+  * [Author](#author)
+
 Karatemeter is a device to measure the acceleration of punching or kicking.
 
 The score is measured by "g", the acceleration of gravity 9.8 (m/s2) or the 
@@ -12,7 +38,7 @@ There is a [Quickstart](doc/Quickstart.pdf) document for fastly play with it.
 
 This project is hosted at [https://github.com/westial/karatemeter](https://github.com/westial/karatemeter)
 
-## General warning ##
+## Warnings ##
 
 **Carefully read the [additional document about the precautions of the lithium 
 battery based devices](doc/LithiumIonBatterySafety.pdf) before
@@ -56,6 +82,9 @@ settings control panel as well.
 6. Critical battery level Led.
 7. Micro USB charging port.
 
+The Arduino based microcontroller has soldered a port for future firmware 
+updates through a FTDI cable.
+
 ##### Battery #####
 
 ![Battery](doc/img/battery.jpg)
@@ -77,6 +106,15 @@ battery is fully charged, or a red light if it is still charging.
 When the battery is charging the charger turns on a red color light and when the
 battery is fully charged the light becomes blue. There is no light when the 
 USB cable is disconnected.
+
+Follow the steps of the next picture sequence to replace or remove the battery.
+The battery is surrounded by a thin plastic band to make extraction easier.
+The grey cover of the first picture is required to avoid shorting the display 
+module and the microcontroller one.
+
+NEVER PUT THE NEGATIVE POLE IN THE POSITIVE PLACE OR POSITIVE IN NEGATIVE ONE.
+
+![Replacing](doc/img/replacebattery.png)
 
 ![Light](doc/img/chargerlight.jpg)
 
@@ -151,9 +189,19 @@ The HARD Sensitivity setting:
 The BAR Display Mode consists on displaying a bar chart with one bar for
 every hit, or an empty space in case of timeout.
 
-The RECORD Display Mode shows the last hit score, and the maximum score 
-reached from the last restart of the Karatemeter. A new best hit record is
-celebrated by an special beep.
+In the BAR Display Mode the number of the top left corner is the maximum value 
+of the hits currently displayed, and that's the tallest bar. 
+
+![Display mode BAR](doc/img/barmodehelp.png)
+
+When the tallest bar disappears by the left for the automatic scrolling, the 
+next tallest bar will reach the top (dotted red line in picture), and all bars 
+are scaled up. When a new hit is taller than the current in display the bars
+are scaling down because the last hit will reach the top.
+
+The RECORD Display Mode shows the *last* hit score, and maximum *record* score 
+since the Karatemeter has turned on or restarted. A new best hit record is
+celebrated by a special beep and the *record* blinks.
 
 ## Usage ##
 
@@ -289,6 +337,12 @@ inside this directory there is the sketch subdirectory
 is a directory named [arduino/prebuild/Karatemeter](arduino/prebuild/Karatemeter)
 that's the Arduino Library required for the sketch. Move this [arduino/prebuild/Karatemeter](arduino/prebuild/Karatemeter)
 to your Arduino libraries location.
+
+## 押忍! ##
+
+Special thanks to [Tenshi dojo](https://tenshidojo.jp/) and the great group of 
+Saturday's classmates for allowing me to learn and enjoy Karate with them 
+despite my very elementary japanese level.
 
 ## License ##
 
