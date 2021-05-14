@@ -24,6 +24,7 @@ add_library(ImpactTest MonoImpactTest.cpp)
 add_library(PeakTest PeakTest.cpp)
 add_library(DisplayTest DisplayTest.cpp)
 add_library(MaxQueueTest MaxQueueTest.cpp)
+add_library(CalculateTest CalculateTest.cpp)
 add_library(MeasureAndDisplayByModeUseCaseTest MeasureAndDisplayByModeUseCaseTest.cpp)
 
 # add mocking library
@@ -39,6 +40,7 @@ target_link_libraries(RunAllTests
         PeakTest
         DisplayTest
         MaxQueueTest
+        CalculateTest
         MeasureAndDisplayByModeUseCaseTest
         MeasureAndDisplayByModeUseCase
         AudibleSparring
@@ -46,4 +48,5 @@ target_link_libraries(RunAllTests
         ArrayPeak
         ArrayMaxQueue
         MonochromeDisplay
+        shared_calculate
 )
